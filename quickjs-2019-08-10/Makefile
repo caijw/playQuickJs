@@ -34,7 +34,7 @@ CONFIG_LTO=y
 
 ifndef CONFIG_WIN32
 # force 32 bit build for some utilities
-CONFIG_M32=y
+# CONFIG_M32=y
 endif
 ifdef CONFIG_DARWIN
 # use clang instead of gcc
