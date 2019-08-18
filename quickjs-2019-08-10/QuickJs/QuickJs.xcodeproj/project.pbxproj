@@ -1,0 +1,371 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		45F4FB0023099136006A9879 /* repl.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAE223099135006A9879 /* repl.c */; };
+		45F4FB0123099136006A9879 /* bjson.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAE323099135006A9879 /* bjson.c */; };
+		45F4FB0223099136006A9879 /* cutils.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAE423099135006A9879 /* cutils.c */; };
+		45F4FB0323099136006A9879 /* repl-bn.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAE623099135006A9879 /* repl-bn.c */; };
+		45F4FB0423099136006A9879 /* quickjs-libc.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAE723099135006A9879 /* quickjs-libc.c */; };
+		45F4FB0523099136006A9879 /* quickjs.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAE923099135006A9879 /* quickjs.c */; };
+		45F4FB0623099136006A9879 /* c_module.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAEB23099135006A9879 /* c_module.c */; };
+		45F4FB0723099136006A9879 /* hello.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAED23099135006A9879 /* hello.c */; };
+		45F4FB0823099136006A9879 /* run-test262.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAEE23099135006A9879 /* run-test262.c */; };
+		45F4FB0923099136006A9879 /* jscompress.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAF223099135006A9879 /* jscompress.c */; };
+		45F4FB0A23099136006A9879 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAF423099135006A9879 /* Makefile */; };
+		45F4FB0B23099136006A9879 /* libbf.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAF523099135006A9879 /* libbf.c */; };
+		45F4FB0C23099136006A9879 /* qjscalc.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAF623099135006A9879 /* qjscalc.c */; };
+		45F4FB0D23099136006A9879 /* unicode_gen.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAF823099135006A9879 /* unicode_gen.c */; };
+		45F4FB0E23099136006A9879 /* qjsc.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAF923099136006A9879 /* qjsc.c */; };
+		45F4FB0F23099136006A9879 /* qjs.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAFC23099136006A9879 /* qjs.c */; };
+		45F4FB1023099136006A9879 /* libregexp.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAFD23099136006A9879 /* libregexp.c */; };
+		45F4FB1123099136006A9879 /* libunicode.c in Sources */ = {isa = PBXBuildFile; fileRef = 45F4FAFE23099136006A9879 /* libunicode.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		45F4FAD6230990A9006A9879 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		45F4FAD8230990AA006A9879 /* QuickJs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = QuickJs; sourceTree = BUILT_PRODUCTS_DIR; };
+		45F4FAE223099135006A9879 /* repl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = repl.c; path = ../../repl.c; sourceTree = "<group>"; };
+		45F4FAE323099135006A9879 /* bjson.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bjson.c; path = ../../bjson.c; sourceTree = "<group>"; };
+		45F4FAE423099135006A9879 /* cutils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cutils.c; path = ../../cutils.c; sourceTree = "<group>"; };
+		45F4FAE523099135006A9879 /* quickjs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = quickjs.h; path = ../../quickjs.h; sourceTree = "<group>"; };
+		45F4FAE623099135006A9879 /* repl-bn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "repl-bn.c"; path = "../../repl-bn.c"; sourceTree = "<group>"; };
+		45F4FAE723099135006A9879 /* quickjs-libc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "quickjs-libc.c"; path = "../../quickjs-libc.c"; sourceTree = "<group>"; };
+		45F4FAE823099135006A9879 /* libunicode-table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "libunicode-table.h"; path = "../../libunicode-table.h"; sourceTree = "<group>"; };
+		45F4FAE923099135006A9879 /* quickjs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = quickjs.c; path = ../../quickjs.c; sourceTree = "<group>"; };
+		45F4FAEA23099135006A9879 /* libunicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libunicode.h; path = ../../libunicode.h; sourceTree = "<group>"; };
+		45F4FAEB23099135006A9879 /* c_module.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = c_module.c; path = ../../c_module.c; sourceTree = "<group>"; };
+		45F4FAEC23099135006A9879 /* cutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cutils.h; path = ../../cutils.h; sourceTree = "<group>"; };
+		45F4FAED23099135006A9879 /* hello.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hello.c; path = ../../hello.c; sourceTree = "<group>"; };
+		45F4FAEE23099135006A9879 /* run-test262.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "run-test262.c"; path = "../../run-test262.c"; sourceTree = "<group>"; };
+		45F4FAEF23099135006A9879 /* unicode_gen_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unicode_gen_def.h; path = ../../unicode_gen_def.h; sourceTree = "<group>"; };
+		45F4FAF023099135006A9879 /* quickjs-libc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "quickjs-libc.h"; path = "../../quickjs-libc.h"; sourceTree = "<group>"; };
+		45F4FAF123099135006A9879 /* quickjs-atom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "quickjs-atom.h"; path = "../../quickjs-atom.h"; sourceTree = "<group>"; };
+		45F4FAF223099135006A9879 /* jscompress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = jscompress.c; path = ../../jscompress.c; sourceTree = "<group>"; };
+		45F4FAF323099135006A9879 /* list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = list.h; path = ../../list.h; sourceTree = "<group>"; };
+		45F4FAF423099135006A9879 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = ../../Makefile; sourceTree = "<group>"; };
+		45F4FAF523099135006A9879 /* libbf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libbf.c; path = ../../libbf.c; sourceTree = "<group>"; };
+		45F4FAF623099135006A9879 /* qjscalc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qjscalc.c; path = ../../qjscalc.c; sourceTree = "<group>"; };
+		45F4FAF723099135006A9879 /* libregexp-opcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "libregexp-opcode.h"; path = "../../libregexp-opcode.h"; sourceTree = "<group>"; };
+		45F4FAF823099135006A9879 /* unicode_gen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = unicode_gen.c; path = ../../unicode_gen.c; sourceTree = "<group>"; };
+		45F4FAF923099136006A9879 /* qjsc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qjsc.c; path = ../../qjsc.c; sourceTree = "<group>"; };
+		45F4FAFA23099136006A9879 /* libregexp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libregexp.h; path = ../../libregexp.h; sourceTree = "<group>"; };
+		45F4FAFB23099136006A9879 /* libbf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libbf.h; path = ../../libbf.h; sourceTree = "<group>"; };
+		45F4FAFC23099136006A9879 /* qjs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qjs.c; path = ../../qjs.c; sourceTree = "<group>"; };
+		45F4FAFD23099136006A9879 /* libregexp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libregexp.c; path = ../../libregexp.c; sourceTree = "<group>"; };
+		45F4FAFE23099136006A9879 /* libunicode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libunicode.c; path = ../../libunicode.c; sourceTree = "<group>"; };
+		45F4FAFF23099136006A9879 /* quickjs-opcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "quickjs-opcode.h"; path = "../../quickjs-opcode.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		45F4FAD5230990A9006A9879 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		45F4FACF230990A9006A9879 = {
+			isa = PBXGroup;
+			children = (
+				45F4FADA230990AA006A9879 /* QuickJs */,
+				45F4FAD9230990AA006A9879 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		45F4FAD9230990AA006A9879 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				45F4FAD8230990AA006A9879 /* QuickJs */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		45F4FADA230990AA006A9879 /* QuickJs */ = {
+			isa = PBXGroup;
+			children = (
+				45F4FAE323099135006A9879 /* bjson.c */,
+				45F4FAEB23099135006A9879 /* c_module.c */,
+				45F4FAE423099135006A9879 /* cutils.c */,
+				45F4FAEC23099135006A9879 /* cutils.h */,
+				45F4FAED23099135006A9879 /* hello.c */,
+				45F4FAF223099135006A9879 /* jscompress.c */,
+				45F4FAF523099135006A9879 /* libbf.c */,
+				45F4FAFB23099136006A9879 /* libbf.h */,
+				45F4FAF723099135006A9879 /* libregexp-opcode.h */,
+				45F4FAFD23099136006A9879 /* libregexp.c */,
+				45F4FAFA23099136006A9879 /* libregexp.h */,
+				45F4FAE823099135006A9879 /* libunicode-table.h */,
+				45F4FAFE23099136006A9879 /* libunicode.c */,
+				45F4FAEA23099135006A9879 /* libunicode.h */,
+				45F4FAF323099135006A9879 /* list.h */,
+				45F4FAF423099135006A9879 /* Makefile */,
+				45F4FAFC23099136006A9879 /* qjs.c */,
+				45F4FAF923099136006A9879 /* qjsc.c */,
+				45F4FAF623099135006A9879 /* qjscalc.c */,
+				45F4FAF123099135006A9879 /* quickjs-atom.h */,
+				45F4FAE723099135006A9879 /* quickjs-libc.c */,
+				45F4FAF023099135006A9879 /* quickjs-libc.h */,
+				45F4FAFF23099136006A9879 /* quickjs-opcode.h */,
+				45F4FAE923099135006A9879 /* quickjs.c */,
+				45F4FAE523099135006A9879 /* quickjs.h */,
+				45F4FAE623099135006A9879 /* repl-bn.c */,
+				45F4FAE223099135006A9879 /* repl.c */,
+				45F4FAEE23099135006A9879 /* run-test262.c */,
+				45F4FAEF23099135006A9879 /* unicode_gen_def.h */,
+				45F4FAF823099135006A9879 /* unicode_gen.c */,
+			);
+			path = QuickJs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		45F4FAD7230990A9006A9879 /* QuickJs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45F4FADF230990AA006A9879 /* Build configuration list for PBXNativeTarget "QuickJs" */;
+			buildPhases = (
+				45F4FAD4230990A9006A9879 /* Sources */,
+				45F4FAD5230990A9006A9879 /* Frameworks */,
+				45F4FAD6230990A9006A9879 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickJs;
+			productName = QuickJs;
+			productReference = 45F4FAD8230990AA006A9879 /* QuickJs */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		45F4FAD0230990A9006A9879 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "jingwei cai";
+				TargetAttributes = {
+					45F4FAD7230990A9006A9879 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = 45F4FAD3230990A9006A9879 /* Build configuration list for PBXProject "QuickJs" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 45F4FACF230990A9006A9879;
+			productRefGroup = 45F4FAD9230990AA006A9879 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				45F4FAD7230990A9006A9879 /* QuickJs */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		45F4FAD4230990A9006A9879 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45F4FB0E23099136006A9879 /* qjsc.c in Sources */,
+				45F4FB0123099136006A9879 /* bjson.c in Sources */,
+				45F4FB0223099136006A9879 /* cutils.c in Sources */,
+				45F4FB0923099136006A9879 /* jscompress.c in Sources */,
+				45F4FB0F23099136006A9879 /* qjs.c in Sources */,
+				45F4FB0B23099136006A9879 /* libbf.c in Sources */,
+				45F4FB0A23099136006A9879 /* Makefile in Sources */,
+				45F4FB0C23099136006A9879 /* qjscalc.c in Sources */,
+				45F4FB0623099136006A9879 /* c_module.c in Sources */,
+				45F4FB0823099136006A9879 /* run-test262.c in Sources */,
+				45F4FB0523099136006A9879 /* quickjs.c in Sources */,
+				45F4FB1023099136006A9879 /* libregexp.c in Sources */,
+				45F4FB0723099136006A9879 /* hello.c in Sources */,
+				45F4FB0423099136006A9879 /* quickjs-libc.c in Sources */,
+				45F4FB0323099136006A9879 /* repl-bn.c in Sources */,
+				45F4FB1123099136006A9879 /* libunicode.c in Sources */,
+				45F4FB0D23099136006A9879 /* unicode_gen.c in Sources */,
+				45F4FB0023099136006A9879 /* repl.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		45F4FADD230990AA006A9879 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		45F4FADE230990AA006A9879 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		45F4FAE0230990AA006A9879 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		45F4FAE1230990AA006A9879 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		45F4FAD3230990A9006A9879 /* Build configuration list for PBXProject "QuickJs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45F4FADD230990AA006A9879 /* Debug */,
+				45F4FADE230990AA006A9879 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45F4FADF230990AA006A9879 /* Build configuration list for PBXNativeTarget "QuickJs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45F4FAE0230990AA006A9879 /* Debug */,
+				45F4FAE1230990AA006A9879 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 45F4FAD0230990A9006A9879 /* Project object */;
+}
