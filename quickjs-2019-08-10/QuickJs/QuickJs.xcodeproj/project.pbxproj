@@ -71,6 +71,7 @@
 		45F4FAFD23099136006A9879 /* libregexp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libregexp.c; path = ../../libregexp.c; sourceTree = "<group>"; };
 		45F4FAFE23099136006A9879 /* libunicode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libunicode.c; path = ../../libunicode.c; sourceTree = "<group>"; };
 		45F4FAFF23099136006A9879 /* quickjs-opcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "quickjs-opcode.h"; path = "../../quickjs-opcode.h"; sourceTree = "<group>"; };
+		45F4FB12230998A8006A9879 /* mark.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = mark.md; path = ../../mark.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +104,7 @@
 		45F4FADA230990AA006A9879 /* QuickJs */ = {
 			isa = PBXGroup;
 			children = (
+				45F4FB12230998A8006A9879 /* mark.md */,
 				45F4FAE323099135006A9879 /* bjson.c */,
 				45F4FAEB23099135006A9879 /* c_module.c */,
 				45F4FAE423099135006A9879 /* cutils.c */,

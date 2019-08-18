@@ -19873,6 +19873,7 @@ static void emit_u32(JSParseState *s, uint32_t val)
 
 static void emit_op(JSParseState *s, uint8_t val)
 {
+    printf("caijw->emit_op");
     JSFunctionDef *fd = s->cur_func;
     DynBuf *bc = &fd->byte_code;
 
@@ -23421,6 +23422,7 @@ static void emit_return(JSParseState *s, BOOL hasval);
 
 static __exception int js_parse_assign_expr(JSParseState *s, BOOL in_accepted)
 {
+    printf("caijw->js_parse_assign_expr");
     int opcode, op, scope;
     JSAtom name0 = JS_ATOM_NULL;
     JSAtom name;
@@ -23605,6 +23607,7 @@ static __exception int js_parse_assign_expr(JSParseState *s, BOOL in_accepted)
 
 static __exception int js_parse_expr2(JSParseState *s, BOOL in_accepted)
 {
+    printf("caijw->js_parse_expr2");
     BOOL comma = FALSE;
     for(;;) {
         if (js_parse_assign_expr(s, in_accepted))
@@ -23629,6 +23632,7 @@ static __exception int js_parse_expr2(JSParseState *s, BOOL in_accepted)
 
 static __exception int js_parse_expr(JSParseState *s)
 {
+    printf("caijw->js_parse_expr");
     return js_parse_expr2(s, TRUE);
 }
 
@@ -24267,39 +24271,46 @@ static __exception int js_parse_statement_or_decl(JSParseState *s,
 
     switch(tok = s->token.val) {
     case '{':
-        if (js_parse_block(s))
-            goto fail;
-        break;
-    case TOK_RETURN:
-        if (s->cur_func->is_eval) {
-            js_parse_error(s, "return not in a function");
-            goto fail;
+        {
+            if (js_parse_block(s))
+                goto fail;
         }
-        if (next_token(s))
-            goto fail;
-        if (s->token.val != ';' && s->token.val != '}' && !s->got_lf) {
+            break;
+    case TOK_RETURN:
+        {
+            if (s->cur_func->is_eval) {
+                js_parse_error(s, "return not in a function");
+                goto fail;
+            }
+            if (next_token(s))
+                goto fail;
+            if (s->token.val != ';' && s->token.val != '}' && !s->got_lf) {
+                if (js_parse_expr(s))
+                    goto fail;
+                emit_return(s, TRUE);
+            } else {
+                emit_return(s, FALSE);
+            }
+            if (js_parse_expect_semi(s))
+                goto fail;
+            
+        }
+            break;
+    case TOK_THROW:
+        {
+            if (next_token(s))
+                goto fail;
+            if (s->got_lf) {
+                js_parse_error(s, "line terminator not allowed after throw");
+                goto fail;
+            }
             if (js_parse_expr(s))
                 goto fail;
-            emit_return(s, TRUE);
-        } else {
-            emit_return(s, FALSE);
+            emit_op(s, OP_throw);
+            if (js_parse_expect_semi(s))
+                goto fail;
         }
-        if (js_parse_expect_semi(s))
-            goto fail;
-        break;
-    case TOK_THROW:
-        if (next_token(s))
-            goto fail;
-        if (s->got_lf) {
-            js_parse_error(s, "line terminator not allowed after throw");
-            goto fail;
-        }
-        if (js_parse_expr(s))
-            goto fail;
-        emit_op(s, OP_throw);
-        if (js_parse_expect_semi(s))
-            goto fail;
-        break;
+            break;
     case TOK_LET:
     case TOK_CONST:
     haslet:
@@ -24309,12 +24320,14 @@ static __exception int js_parse_statement_or_decl(JSParseState *s,
         }
         /* fall thru */
     case TOK_VAR:
-        if (next_token(s))
-            goto fail;
-        if (js_parse_var(s, TRUE, tok, FALSE))
-            goto fail;
-        if (js_parse_expect_semi(s))
-            goto fail;
+        {
+            if (next_token(s))
+                goto fail;
+            if (js_parse_var(s, TRUE, tok, FALSE))
+                goto fail;
+            if (js_parse_expect_semi(s))
+                goto fail;
+        }
         break;
     case TOK_IF:
         {
@@ -24871,10 +24884,12 @@ static __exception int js_parse_statement_or_decl(JSParseState *s,
             tok = TOK_LET;
             goto haslet;
         case FALSE:
+                printf("caijw->js_parse_statement_or_decl TOK_IDENT not let");
             break;
         default:
             goto fail;
         }
+            printf("caijw->js_parse_statement_or_decl token_is_pseudo_keyword: %d", token_is_pseudo_keyword(s, JS_ATOM_async));
         if (token_is_pseudo_keyword(s, JS_ATOM_async) &&
             peek_token(s, TRUE) == TOK_FUNCTION) {
             if (!(decl_mask & DECL_MASK_OTHER)) {
@@ -24882,6 +24897,7 @@ static __exception int js_parse_statement_or_decl(JSParseState *s,
                 js_parse_error(s, "function declarations can't appear in single-statement context");
                 goto fail;
             }
+            printf("caijw->js_parse_statement_or_decl js_parse_function_decl");
         parse_func_var:
             if (js_parse_function_decl(s, JS_PARSE_FUNC_VAR,
                                        JS_FUNC_NORMAL, JS_ATOM_NULL,
@@ -24909,6 +24925,7 @@ static __exception int js_parse_statement_or_decl(JSParseState *s,
 
     default:
     hasexpr:
+            printf("caijw->js_parse_statement_or_decl js_parse_expr");
         if (js_parse_expr(s))
             goto fail;
         if (s->cur_func->eval_ret_idx >= 0) {
