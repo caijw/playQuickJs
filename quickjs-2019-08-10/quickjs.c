@@ -19148,26 +19148,28 @@ static __exception int js_parse_regexp(JSParseState *s)
     string_buffer_free(b2);
     return -1;
 }
-
+// 下一个token解析
 static __exception int next_token(JSParseState *s)
 {
     const uint8_t *p;
     int c;
     char buf[4096], *q;
-    BOOL ident_has_escape;
+    BOOL ident_has_escape; // TODO
 
     free_token(s, &s->token);
 
     p = s->last_ptr = s->buf_ptr;
     s->got_lf = FALSE;
     s->last_line_num = s->token.line_num;
+    // printf("last_line_num: %d\n", s->last_line_num);
  redo:
+    // printf("s->token.line_num: %d\n", s->line_num);
     s->token.line_num = s->line_num;
     s->token.ptr = p;
-    c = *p;
+    c = *p; // 当前的字符
     switch(c) {
     case 0:
-        s->token.val = TOK_EOF;
+        s->token.val = TOK_EOF; // 文件结束符
         break;
     case '`':
         if (!s->cur_func) {
@@ -19197,7 +19199,7 @@ static __exception int next_token(JSParseState *s)
         p++;
     line_terminator:
         s->got_lf = TRUE;
-        s->line_num++;
+        s->line_num++; // 换行
         goto redo;
     case '\f':
     case '\v':
@@ -19231,7 +19233,7 @@ static __exception int next_token(JSParseState *s)
                     s->got_lf = TRUE; /* considered as LF for ASI */
                     p++;
                 } else if (*p >= 0x80) {
-                    c = unicode_from_utf8(p, UTF8_CHAR_LEN_MAX, &p);
+                    c = unicode_from_utf8(p, UTF8_CHAR_LEN_MAX, &p); // TODO
                     if (c == CP_LS || c == CP_PS) {
                         s->got_lf = TRUE; /* considered as LF for ASI */
                     }
@@ -19268,7 +19270,7 @@ static __exception int next_token(JSParseState *s)
             p = s->buf_ptr;
         }
 #endif
-        else if (p[1] == '=') {
+        else if (p[1] == '=') { // /= 运算符
             p += 2;
             s->token.val = TOK_DIV_ASSIGN;
         } else {
@@ -19277,14 +19279,14 @@ static __exception int next_token(JSParseState *s)
         }
         break;
     case '\\':
-        if (p[1] == 'u') {
+        if (p[1] == 'u') { // TODO unicode字符？
             const uint8_t *p1 = p + 1;
-            int c1 = lre_parse_escape(&p1, TRUE);
+            int c1 = lre_parse_escape(&p1, TRUE); // TODO
             if (c1 >= 0 && lre_js_is_ident_first(c1)) {
                 c = c1;
                 p = p1;
                 ident_has_escape = TRUE;
-                goto has_ident;
+                goto has_ident; // 跳转到识别标识符
             } else {
                 /* XXX: syntax error? */
             }
@@ -19294,28 +19296,29 @@ static __exception int next_token(JSParseState *s)
     case 'A' ... 'Z':
     case '_':
     case '$':
+        // 标识符
         /* identifier */
-        p++;
+        p++; // p下一个字符指针
         ident_has_escape = FALSE;
     has_ident:
-        q = buf;
+        q = buf; // 存放标识符的字符串表示
         for(;;) {
-            const uint8_t *p1 = p;
+            const uint8_t *p1 = p; // p1 下一个字符指针
 
             if (c < 128) {
-                *q++ = c;
+                *q++ = c; // identifier的当前字符
             } else {
                 q += unicode_to_utf8((uint8_t*)q, c);
             }
-            c = *p1++;
+            c = *p1++; // c下一个字符, p1下下个字符指针
             if (c == '\\' && *p1 == 'u') {
-                c = lre_parse_escape(&p1, TRUE);
+                c = lre_parse_escape(&p1, TRUE); // TODO 解析unicode ?
                 ident_has_escape = TRUE;
             } else if (c >= 128) {
-                c = unicode_from_utf8(p, UTF8_CHAR_LEN_MAX, &p1);
+                c = unicode_from_utf8(p, UTF8_CHAR_LEN_MAX, &p1); // TODO
             }
             /* XXX: check if c >= 0 and c <= 0x10FFFF */
-            if (!lre_js_is_ident_next(c))
+            if (!lre_js_is_ident_next(c)) // TODO
                 break;
             p = p1;
             if ((q - buf) >= sizeof(buf) - UTF8_CHAR_LEN_MAX) {
@@ -19323,10 +19326,11 @@ static __exception int next_token(JSParseState *s)
                 goto fail;
             }
         }
-        *q = '\0';
-        s->token.u.ident.atom = JS_NewAtomLen(s->ctx, buf, q - buf);
+        *q = '\0'; // identifier字符串结束符
+        s->token.u.ident.atom = JS_NewAtomLen(s->ctx, buf, q - buf); // token为identifier的字符串
         s->token.u.ident.has_escape = ident_has_escape;
-        s->token.u.ident.is_reserved = FALSE;
+        s->token.u.ident.is_reserved = FALSE; // 是否保留关键字
+        // TODO 这一串逻辑。。。
         if (s->token.u.ident.atom <= JS_ATOM_LAST_KEYWORD ||
             (s->token.u.ident.atom <= JS_ATOM_LAST_STRICT_KEYWORD &&
              s->cur_func && (s->cur_func->js_mode & JS_MODE_STRICT)) ||
@@ -19753,7 +19757,7 @@ static __exception int next_token(JSParseState *s)
     }
     s->buf_ptr = p;
 
-    //    dump_token(s, &s->token);
+        dump_token(s, &s->token);
     return 0;
 
  fail:
@@ -24206,10 +24210,11 @@ static void set_eval_ret_undefined(JSParseState *s)
         emit_u16(s, s->cur_func->eval_ret_idx);
     }
 }
-
+// 解析完statement或者declation
 static __exception int js_parse_statement_or_decl(JSParseState *s,
                                                   int decl_mask)
 {
+    printf("caijw->js_parse_statement_or_decl\n");
     JSContext *ctx = s->ctx;
     JSAtom label_name;
     int tok;
@@ -26429,23 +26434,29 @@ static __exception int js_parse_source_element(JSParseState *s)
 {
     JSFunctionDef *fd = s->cur_func;
 
+    printf("caijw->js_parse_source_element\n");
+
     if (s->token.val == TOK_FUNCTION ||
         (token_is_pseudo_keyword(s, JS_ATOM_async) &&
          peek_token(s, TRUE) == TOK_FUNCTION)) {
+        printf("caijw->js_parse_source_element js_parse_function_decl\n");
         if (js_parse_function_decl(s, JS_PARSE_FUNC_STATEMENT,
                                    JS_FUNC_NORMAL, JS_ATOM_NULL,
                                    s->token.ptr, s->token.line_num))
             return -1;
     } else if (s->token.val == TOK_EXPORT && fd->module) {
+        printf("caijw->js_parse_source_element js_parse_export\n");
         if (js_parse_export(s))
             return -1;
     } else if (s->token.val == TOK_IMPORT && fd->module &&
                peek_token(s, FALSE) != '(') {
+        printf("caijw->js_parse_source_element js_parse_import\n");
         /* the peek_token is needed to avoid confusion with ImportCall
            (dynamic import) */
         if (js_parse_import(s))
             return -1;
     } else {
+        printf("caijw->js_parse_source_element js_parse_statement_or_decl\n");
         if (js_parse_statement_or_decl(s, DECL_MASK_ALL))
             return -1;
     }
@@ -31043,13 +31054,16 @@ static __exception int js_parse_program(JSParseState *s)
 {
     JSFunctionDef *fd = s->cur_func;
     int idx;
-
+    printf("caijw->js_parse_program next_token begin\n");
+    // 先解析下一个token
     if (next_token(s))
         return -1;
+    printf("caijw->js_parse_program next_token done\n");
 
+    printf("caijw->js_parse_program js_parse_directives begin\n");
     if (js_parse_directives(s))
         return -1;
-
+    printf("caijw->js_parse_program js_parse_directives done\n");
     fd->is_global_var = (fd->eval_type == JS_EVAL_TYPE_GLOBAL) ||
         (fd->eval_type == JS_EVAL_TYPE_MODULE) ||
         !(fd->js_mode & JS_MODE_STRICT);
@@ -31060,7 +31074,6 @@ static __exception int js_parse_program(JSParseState *s)
         if (idx < 0)
             return -1;
     }
-
     while (s->token.val != TOK_EOF) {
         if (js_parse_source_element(s))
             return -1;
@@ -31164,6 +31177,8 @@ static JSValue __JS_EvalInternal(JSContext *ctx, JSValueConst this_obj,
     JSFunctionBytecode *b;
     JSFunctionDef *fd;
     JSModuleDef *m;
+
+    // printf("input: %s\n", input);
 
     js_parse_init(ctx, s, input, input_len, filename);
     skip_shebang(s);
@@ -31294,6 +31309,7 @@ JSValue JS_Eval(JSContext *ctx, const char *input, size_t input_len,
                 const char *filename, int eval_flags)
 {
     int eval_type = eval_flags & JS_EVAL_TYPE_MASK;
+    // printf("eval_type: %d\n", eval_type);
     JSValue ret;
 
     assert(eval_type == JS_EVAL_TYPE_GLOBAL ||
@@ -45843,6 +45859,7 @@ void JS_AddIntrinsicDate(JSContext *ctx)
 
 void JS_AddIntrinsicEval(JSContext *ctx)
 {
+    printf("JS_AddIntrinsicEval\n");
     ctx->eval_internal = __JS_EvalInternal;
 }
 
